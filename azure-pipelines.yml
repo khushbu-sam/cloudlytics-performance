@@ -23,4 +23,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      jmeter -n -t $(System.DefaultWorkingDirectory)/Cloudlytics_Final.jmx -l $(System.DefaultWorkingDirectory)/path/to/results/result.jtl -Jthreads=1 -Jramp_time=1
+      jmeter -n -t Cloudlytics_Final.jmx -l $(System.DefaultWorkingDirectory)/path/to/results/result.jtl -Jthreads=1 -Jramp_time=1
