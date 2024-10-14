@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master # Change this to your branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use an Ubuntu agent
+
+steps:
+- task: Bash@3
+  displayName: 'Install JMeter'
+  inputs:
+    targetType: 'inline'
+    script: |
+      sudo apt-get update
+      sudo apt-get install -y jmeter
+
+- task: Bash@3
+  displayName: 'Run JMeter Test'
+  inputs:
+    targetType: 'inline'
+    script: |
+      jmeter -n -t $(System.DefaultWorkingDirectory)/Cloudlytics_Final.jmx -l $(System.DefaultWorkingDirectory)/path/to/results/result.jtl -Jthreads=1 -Jramp_time=1
